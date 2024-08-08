@@ -2,10 +2,10 @@
 
 # comment
 class Node
-  attr_accessor :value, :next_node
+  attr_accessor :data, :next_node
 
   def initialize(value)
-    @value = value
+    @data = value
     @next_node = nil
   end
 end

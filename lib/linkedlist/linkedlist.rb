@@ -65,7 +65,7 @@ class LinkedList
   def contains?(value)
     current = @head
     until current.nil?
-      return true if current.value == value
+      return true if current.data == value
 
       current = current.next_node
     end
@@ -76,12 +76,12 @@ class LinkedList
     i = 0
     current = @head
     until current.nil?
-      return i if current.value == value
+      return i if current.data == value
 
       i += 1
       current = current.next_node
     end
-    'not found'
+    nil
   end
 
   def to_s
@@ -89,7 +89,7 @@ class LinkedList
     values = []
 
     until current.nil?
-      values << current.value
+      values << current.data
       current = current.next_node
     end
 
