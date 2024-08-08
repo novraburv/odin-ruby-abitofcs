@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'node'
+
 # comment
 class LinkedList
   attr_reader :head, :tail
@@ -124,41 +126,32 @@ class LinkedList
   end
 end
 
-# comment
-class Node
-  attr_accessor :value, :next_node
+# TEST
+# ll = LinkedList.new
+# ll.append 2
+# ll.append 5
+# ll.append 6
+# ll.prepend 'hello'
+# ll.prepend 'first'
 
-  def initialize(value)
-    @value = value
-    @next_node = nil
-  end
-end
+# p ll
+# p "size: #{ll.size}"
+# p "node at index 3: #{ll.at(3)}"
 
-ll = LinkedList.new
-ll.append 2
-ll.append 5
-ll.append 6
-ll.prepend 'hello'
-ll.prepend 'first'
+# p "popped node: #{ll.pop.inspect}"
+# p ll
 
-p ll
-p "size: #{ll.size}"
-p "node at index 3: #{ll.at(3)}"
+# p "contains 5: #{ll.contains? 5}"
+# p "contains zero: #{ll.contains? 'zero'}"
 
-p "popped node: #{ll.pop.inspect}"
-p ll
+# p "find first: #{ll.find 'first'}"
+# p "find 5: #{ll.find 5}"
+# p "find 3: #{ll.find 3}"
 
-p "contains 5: #{ll.contains? 5}"
-p "contains zero: #{ll.contains? 'zero'}"
+# ll.insert_at('on index 2', 2)
+# p ll.insert_at('on index 99', 9)
 
-p "find first: #{ll.find 'first'}"
-p "find 5: #{ll.find 5}"
-p "find 3: #{ll.find 3}"
+# p ll.to_s
 
-ll.insert_at('on index 2', 2)
-p ll.insert_at('on index 99', 9)
-
-p ll.to_s
-
-ll.remove_at(3)
-p ll.to_s
+# ll.remove_at(3)
+# p ll.to_s

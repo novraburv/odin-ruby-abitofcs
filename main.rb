@@ -2,4 +2,4 @@
 
 # require_relative 'lib/recursion/fibonacci'
 # require_relative 'lib/recursion/merge_sort'
-require_relative 'lib/linkedlist'
+require_relative 'lib/linkedlist/linkedlist'
