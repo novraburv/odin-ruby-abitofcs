@@ -55,6 +55,7 @@ class LinkedList
   def shift
     current = @head
     @head = head.next_node
+    current.next_node = nil
     current
   end
 
@@ -122,6 +123,8 @@ class LinkedList
     current = at(index)
 
     prev.next_node = current.next_node
+    current.next_node = nil
+    current
   end
 end
 
@@ -152,10 +155,10 @@ end
 
 # p ll.to_s
 
-# ll.remove_at(1)
+# p ll.remove_at(1)
 # p ll.to_s
 
-# ll.remove_at(0)
+# p ll.remove_at(0)
 # p ll.to_s
 
 # p "shifted: #{ll.shift.inspect}"
