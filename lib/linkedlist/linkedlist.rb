@@ -53,16 +53,18 @@ class LinkedList
   end
 
   def shift
+    current = @head
     @head = head.next_node
+    current
   end
 
   def pop
-    current = @head
-    current = current.next_node until current.next_node.next_node.nil?
-    deleted = current.next_node
-    current.next_node = nil
-    @tail = current
-    deleted
+    prev = at(size - 2)
+    current = prev.next_node
+
+    @tail = prev
+    prev.next_node = nil
+    current
   end
 
   def contains?(value)
@@ -105,10 +107,10 @@ class LinkedList
 
     new_node = Node.new value
 
-    before = at index - 1
+    prev = at index - 1
     new_node.next_node = at index
 
-    before.next_node = new_node
+    prev.next_node = new_node
   end
 
   def remove_at(index)
@@ -116,10 +118,10 @@ class LinkedList
     return shift if index.zero?
     return pop if index == size - 1
 
-    before = at(index - 1)
+    prev = at(index - 1)
     current = at(index)
 
-    before.next_node = current.next_node
+    prev.next_node = current.next_node
   end
 end
 
@@ -154,4 +156,7 @@ end
 # p ll.to_s
 
 # ll.remove_at(0)
+# p ll.to_s
+
+# p "shifted: #{ll.shift.inspect}"
 # p ll.to_s
