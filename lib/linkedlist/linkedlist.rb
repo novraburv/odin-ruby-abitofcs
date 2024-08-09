@@ -53,6 +53,8 @@ class LinkedList
   end
 
   def shift
+    return delete_only_node if size <= 1
+
     current = @head
     @head = head.next_node
     current.next_node = nil
@@ -60,6 +62,8 @@ class LinkedList
   end
 
   def pop
+    return delete_only_node if size <= 1
+
     prev = at(size - 2)
     current = prev.next_node
 
@@ -124,6 +128,15 @@ class LinkedList
 
     prev.next_node = current.next_node
     current.next_node = nil
+    current
+  end
+
+  private
+
+  def delete_only_node
+    current = @head
+    @head = nil
+    @tail = nil
     current
   end
 end
