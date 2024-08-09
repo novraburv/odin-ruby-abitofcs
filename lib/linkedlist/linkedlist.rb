@@ -44,13 +44,16 @@ class LinkedList
   # tail -- use getter
 
   def at(index)
-    i = 0
     current = @head
-    while i < index
+    while index.positive?
       current = current.next_node
-      i += 1
+      index -= 1
     end
     current
+  end
+
+  def shift
+    @head = head.next_node
   end
 
   def pop
@@ -98,31 +101,25 @@ class LinkedList
   end
 
   def insert_at(value, index)
-    i = 0
-    current = @head
-    while i < index - 1
-      return "list not long enough: index #{i}" if current.nil?
-
-      i += 1
-      current = current.next_node
-    end
+    return "index too large. size: #{size}" if index >= size
 
     new_node = Node.new value
-    new_node.next_node = current.next_node
-    current.next_node = new_node
+
+    before = at index - 1
+    new_node.next_node = at index
+
+    before.next_node = new_node
   end
 
   def remove_at(index)
-    i = 0
-    current = @head
+    return "index too large. size: #{size}" if index >= size
+    return shift if index.zero?
+    return pop if index == size - 1
 
-    while i < index - 1
-      return "list not long enough: index #{i}" if current.nil?
+    before = at(index - 1)
+    current = at(index)
 
-      i += 1
-      current = current.next_node
-    end
-    current.next_node = current.next_node.next_node
+    before.next_node = current.next_node
   end
 end
 
@@ -136,7 +133,7 @@ end
 
 # p ll
 # p "size: #{ll.size}"
-# p "node at index 3: #{ll.at(3)}"
+# p "node at index 3: #{ll.at(3).inspect}"
 
 # p "popped node: #{ll.pop.inspect}"
 # p ll
@@ -153,5 +150,8 @@ end
 
 # p ll.to_s
 
-# ll.remove_at(3)
+# ll.remove_at(1)
+# p ll.to_s
+
+# ll.remove_at(0)
 # p ll.to_s
